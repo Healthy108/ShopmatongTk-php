@@ -1,0 +1,94 @@
+/* ==============================Toast Mess================================== */
+#toast{
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    z-index: 9999;
+}
+
+.toast{
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 2px;
+    padding: 20px 0;
+    border-left: 4px solid;
+    box-shadow: 0 5px 8px rgba(0,0,0, 0.8);
+    transition: all linear .3s;
+    }
+
+@keyframes slideInLeft{
+    from{
+        opacity: 0;
+        transform: translateX(calc(100% + 32px));
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut{
+    to{
+        opacity: 0;
+    }
+}
+
+.toast--success{
+    border-color: green;;
+}
+.toast--success .toast__icon{
+    color: green;
+}
+
+
+.toast--info{
+    border-color: blue;
+}
+.toast--info .toast__icon{
+    color: blue;
+}
+
+
+.toast--warning{
+    border-color: red;
+}
+.toast--warning .toast__icon{
+    color: red;
+}
+
+
+.toast--error{
+    border-color: darkred;
+}
+.toast--error .toast__icon{
+    color: darkred;
+}
+
+
+.toast + .toast{
+    margin-top: 20px;
+}
+
+.toast__icon{
+    font-size: 24px;
+    
+}
+
+.toast__body{
+    flex-grow: 1;
+}
+
+.toast__tittle{
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 4px;
+}
+
+.toast__close{
+    padding: 0 16px;
+    color: rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
