@@ -20,7 +20,7 @@
   	$page=$_GET['page'];
   }
   //so luong san pham o moi trang:
-  $productsperpage=4;
+  $productsperpage=12;
   //lay cac san pham bat dau tu chi so bao nhieu trong bang (0 tức là bắt đầu từ bản ghi đầu tiên)
   $from=($page-1)*$productsperpage;
   //lấy tổng số sản phẩm
@@ -44,11 +44,10 @@
 			<section><input type="button" value="Đặt mua" onclick="location='?option=cart&action=add&id=<?=$item['id']?>';"></section>
 		</section>
 	<?php endforeach;?>
-
-
     <script src="script.js"></script>
-
 </section>
+
+<!-- pages -->
 <section class="pages">
 	<?php for($i=1; $i<=$totalPages; $i++):?>
 		<a class="<?=(empty($_GET['page'])&&$i==1)||(isset($_GET['page'])&&$_GET['page']==$i)?'highlight':''?>" href="?option=<?=$option?>&page=<?=$i?>"><?=$i?></a>
@@ -57,9 +56,6 @@
 <?php endif;?>
 
 <style>
-    
-
- 
 .img {
     position: relative;
     overflow: hidden;
