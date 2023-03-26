@@ -71,40 +71,27 @@
 
 
 <!-- category section starts  -->
-
-<section class="category">
-
-    <a href="#" class="box">
-        <img src="images/1679568570_mat-ong-hoa-ca-phe-1kg-3.jpg" alt="">
-        <p>Mật Ong Hoa Cafe</p>
-    </a>
-
-    <a href="#" class="box">
-        <img src="images/1640226726_mat-ong-nhan-db-1000g.jpg" alt="">
-        <p>Mật Ong Hoa Nhãn</p>
-    </a>
-
-    <a href="#" class="box">
-        <img src="images/1635324414_mat-ong-hoa-rung.jpg" alt="">
-        <p>Mật Ong Hoa Rừng</p>
-    </a>
-
-    <a href="#" class="box">
-        <img src="images/matongtaybac.jpg" alt="">
-        <p>Mật Ong Tây Bắc</p>
-    </a>
-
-    <a href="#" class="box">
-        <img src="images/matonghoanhanplus.jpg" alt="">
-        <p>Mật Ong Normal</p>
-    </a>
-
+<?php 
+    $query = "select*from brands where status";
+    $result = $connect->query($query);
+?>
+<section class="review">
+    <div class="swiper review-slider">
+        <div class="swiper-wrapper" >
+            <?php foreach($result as $item):?>
+            <div class="swiper-slide box category">
+            <a  class="box" href="?option=showproducts&brandid=<?=$item['id']?>">
+                <img src="<?=$item['image']?>" alt="">
+                <p><?=$item['name']?></p>
+            </a>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </section>
 
-<!-- category section ends -->
 
 <!-- about section starts  -->
-
 <section class="about" id="about">
 
     <div class="contentread">
@@ -119,5 +106,7 @@
 <!-- home -->
 <?php include'showproducts.php';?>
 
-
+<!-- script -->
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script src="script1.js"></script>
 

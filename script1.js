@@ -1,20 +1,20 @@
 var swiper = new Swiper(".review-slider", {
   loop:true,
-  spaceBetween: 20,
+  spaceBetween: 100,
   autoplay: {
-      delay: 4000,
+      delay: 2800,
       disableOnInteraction: false,
   },
   centereedSlides: true,
   breakpoints: {
     0: {
-      slidesPerView: 1,
+      slidesPerView: 6,
     },
     768: {
-      slidesPerView: 2,
+      slidesPerView: 6,
     },
     1020: {
-      slidesPerView: 3,
+      slidesPerView: 6,
     },
   },
 });

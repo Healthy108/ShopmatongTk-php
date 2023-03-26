@@ -1,11 +1,12 @@
 <div class="pointerleft">
-        <?php 
+<?php 
         $query = "select*from brands where status";
         $result = $connect->query($query);
- ?>
- <?php foreach($result as $item):?>
-                <section class="left"><b><a href="?option=showproducts&brandid=<?=$item['id']?>"><?=$item['name']?></a></b></section>
- <?php endforeach; ?>
+?>
+<?php foreach($result as $item):?>
+        <section class="left"><b><a href="?option=showproducts&brandid=<?=$item['id']?>"><?=$item['name']?></a></b></section>
+<?php endforeach; ?>
+
 </div>
 <hr/>
 <div>
