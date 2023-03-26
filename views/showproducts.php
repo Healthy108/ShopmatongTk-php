@@ -30,6 +30,9 @@
   //lấy các sản phẩm ở trang hiện thời
   $query.=" limit $from,$productsperpage";
   $result=$connect->query($query);
+
+  $checkUser = isset($_SESSION['member']) ? '?option=cart' : '?option=signin'
+
 ?>
 
 <?php if(mySqli_num_rows($result) == 0):?>
@@ -41,7 +44,11 @@
 			<section class="img"><a href="?option=productdetail&id=<?=$item['id']?>"><img src="images/<?=$item['image']?>"></a></section>
 			<section class="name"><?=$item['name']?></section>
 			<section class="price"><?=number_format($item['price'],0,',','.')?> VND</section>
-			<section><input type="button" value="Đặt mua" onclick="location='?option=cart&action=add&id=<?=$item['id']?>';"></section>
+			<section>
+        <!-- <input type="button" value="Đặt mua" onclick="location='?option=cart&action=add&id=<?=$item['id']?>';"> -->
+        <input type="button" value="Đặt mua" onclick="location='<?=$checkUser?>&action=add&id=<?=$item['id']?>'">
+
+      </section>
 		</section>
 	<?php endforeach;?>
     <script src="script.js"></script>

@@ -1,4 +1,5 @@
 <?php
+
 if(empty($_SESSION['cart'])){
 	$_SESSION['cart']=array();
 }
@@ -7,9 +8,9 @@ if(empty($_SESSION['cart'])){
 		switch($_GET['action']){
 			case'add':
 				if(array_key_exists($id, array_keys($_SESSION['cart']))){
-					$_SESSION['cart'][$id]++;
-				}else{
 					$_SESSION['cart'][$id]=1;
+				}else{
+					$_SESSION['cart'][$id]++;
 				}
 				header("location: ?option=cart");
 				break;
@@ -45,10 +46,11 @@ if(!empty($_SESSION['cart'])):
 	// foreach(array_keys($_SESSION['cart']) as $key)
 	// $ids.=",".$key;
 	$ids= implode(',', array_keys($_SESSION['cart']));
+	// $query="select*from products where id in($ids)";
 	$query="select*from products where id in($ids)";
 	$result=$connect->query($query);
 ?>
-	<table border="1" width="100%" cellpadding="0" cellspacing="0" style="text-align: center;">
+	<table border="1px" width="100%" cellpadding="0" cellspacing="0" style="text-align: center;">
 		<thead>
 			<tr>
 				<td>Image</td>
@@ -80,7 +82,7 @@ if(!empty($_SESSION['cart'])):
 	endforeach;
 ?>
 		<tr>
-			<td colspan="5" style="font-weight: bold; background: lightyellow; height: 20px; ">
+			<td colspan="5" style="padding: 20px;">
 				<section>Tổng tiền: <?=number_format($toTal,0,',','.')?> VND</section>
 				<section>Thuế: <?=number_format($thue,0,',','.')?> VND</section>
 				<section><input type="button" value="Delete Cart" onclick="if(confirm('Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng?'))location='?option=cart&action=deleteall';"> <input type="button" value="Đặt hàng" onclick="location='?option=cart&action=order';"></section>
