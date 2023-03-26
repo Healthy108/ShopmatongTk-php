@@ -28,7 +28,7 @@ if(isset($_POST['username'])){
 	}
 }
 ?>
-<section style="text-align: center; color: black;">
+<section style="text-align: center; color: black; min-height: 100vh;">
 	<h1 style="line-height: 50px; font-size: 30px;">Đăng nhập tài khoản</h1>
 	<section><?=isset($alert)?$alert:""?></section>
 	<section>

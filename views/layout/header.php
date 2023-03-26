@@ -1,7 +1,8 @@
+<!-- header -->
 <div class="header_Top">
 
   <!-- logo -->
-  <div  >
+  <div>
     <img src="images/logo-con-ong-10.jpg" alt="Logo shopTK" class="logo">
   </div>
 
@@ -13,8 +14,8 @@
 
   <!-- menu top -->
   <a href="?option=home"><b>HOME</b></a>
+  <a href="?option=feedback"><b>TOP-PRODUCTS</b></a>
   <a href="?option=news"><b>NEWS</b></a>
-  <a href="?option=feedback"><b>FEEDBACK</b></a>
     <?php if(empty($_SESSION['member'])):?>
       <a href="?option=signin"><b>SIGNIN</b></a>
       <a href="?option=register"><b>REGISTER</b></a>
@@ -32,7 +33,7 @@
     <div id="myDropdown" class="dropdown-content">
       <a href="?option=home">Home</a>
       <a href="?option=news">News</a>
-      <a href="?option=feedback">FeedBack</a>
+      <a href="?option=feedback">Top-Products</a>
       <a href="?option=cart">Cart</a>
       <?php if(empty($_SESSION['member'])):?>
       <a href="?option=signin">Signin</a>

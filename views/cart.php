@@ -39,8 +39,8 @@ if(empty($_SESSION['cart'])){
 		}
 	}
 ?>
-<section class="cart">
-<?php
+<section class="cart" style="min-height: 88vh;">
+<?php 
 if(!empty($_SESSION['cart'])):
 	// $ids="0";
 	// foreach(array_keys($_SESSION['cart']) as $key)

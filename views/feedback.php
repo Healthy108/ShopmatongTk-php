@@ -1,3 +1,6 @@
+
+
+<!-- TOP- Products -->
 <section class="review">
     <div class="swiper review-slider">
 
@@ -60,7 +63,7 @@
 </section>
 
 <section>
-    <div class="dialog-btn"><p style="text-align: center;">Mọi bài đánh giá SHOP vui lòng gửi về đường mail: zimzimrick@gmail.com</p>
+    <div class="dialog-btn"><p style="text-align: center;">Mọi bài đánh giá SHOP vui lòng gửi về đường mail: <a href="mailto:tuankhanh668sdtq@gmail.com"  class="dialog-btn">tuankhanh668sdtq@gmail.com</a></p></p>
     <p style="text-align: center;">Xin cảm ơn quý khách!</p></div>
 </section>
 
@@ -134,7 +137,6 @@
     }
 
     .review .review-slider .box{
-
         background: #000;
         border-radius: .5rem;
         text-align: center;

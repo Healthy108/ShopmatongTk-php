@@ -1,4 +1,3 @@
-
 var swiper = new Swiper(".review-slider", {
   loop:true,
   spaceBetween: 20,
@@ -19,7 +18,5 @@ var swiper = new Swiper(".review-slider", {
     },
   },
 });
-
-
 
 // ===============================================
