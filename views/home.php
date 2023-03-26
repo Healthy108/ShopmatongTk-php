@@ -69,6 +69,53 @@
     </script>
 </div>
 
+
+<!-- category section starts  -->
+
+<section class="category">
+
+    <a href="#" class="box">
+        <img src="images/1679568570_mat-ong-hoa-ca-phe-1kg-3.jpg" alt="">
+        <p>Mật Ong Hoa Cafe</p>
+    </a>
+
+    <a href="#" class="box">
+        <img src="images/1640226726_mat-ong-nhan-db-1000g.jpg" alt="">
+        <p>Mật Ong Hoa Nhãn</p>
+    </a>
+
+    <a href="#" class="box">
+        <img src="images/1635324414_mat-ong-hoa-rung.jpg" alt="">
+        <p>Mật Ong Hoa Rừng</p>
+    </a>
+
+    <a href="#" class="box">
+        <img src="images/matongtaybac.jpg" alt="">
+        <p>Mật Ong Tây Bắc</p>
+    </a>
+
+    <a href="#" class="box">
+        <img src="images/matonghoanhanplus.jpg" alt="">
+        <p>Mật Ong Normal</p>
+    </a>
+
+</section>
+
+<!-- category section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <div class="contentread">
+        <span>Why should you use honey?</span>
+        <h3>Honey has so many benefits</h3>
+        <p>Honey contains nutrients that are beneficial for health, Raw honey is rich in antioxidants, The antioxidants in honey are good for heart health, Honey helps heal wounds quickly, Everything is great!!!.</p>
+        <a href="#" class="btn">read more</a>
+    </div>
+
+</section>
+
 <!-- home -->
 <?php include'showproducts.php';?>
 
