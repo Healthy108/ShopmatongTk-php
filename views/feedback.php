@@ -129,7 +129,7 @@
 </section>
 
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script1.js"></script>
 
 <style>
     .review .review-slider{
