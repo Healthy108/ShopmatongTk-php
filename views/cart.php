@@ -4,33 +4,38 @@ if(empty($_SESSION['cart'])){
 }
 	if(isset($_GET['action'])){
 		$id=isset($_GET['id'])?$_GET['id']:'';
+		$itemId = $_GET['id'];
+		$nameUser = $_SESSION['member'];
+		$idUser = "select*from member where fullname = ('$nameUser')";
+		$memberid = mySqli_fetch_array($connect->query($idUser))['id'];
 
 		switch($_GET['action']){
 			case'add':
-				if(isset($_GET['id'])){
-					$nameUser = $_SESSION['member'];
-					$idUser = "select*from member where fullname = ('$nameUser')";
-					$memberid = mySqli_fetch_array($connect->query($idUser))['id'];
-					$productid=$_GET['id'];
-					$connect->query("insert carts(memberid,productid) values($memberid,$productid)");
-					$_SESSION['cart'][$id]=1;
-				}else{
-					$_SESSION['cart'][$id]++;
+				$productid=$_GET['id'];
+				$itemId = $_GET['id'];
+				$issetProductId = "select*from carts where carts.productid = $itemId and carts.memberid = $memberid";
+				$queryCart = mySqli_fetch_array($connect->query($issetProductId));
+				// querycarts chưa bắt được id member, nên tạm code cứng = 1.
+				if (empty($queryCart)) {
+						$connect->query("insert carts(memberid,productid) values($memberid,$productid)");
+				} else {
+					$connect->query("update carts set quantity=quantity+1 where productid = 1");
 				}
 				header("location: ?option=cart");
 				break;
 			case'delete':
-				unset($_SESSION['cart'][$id]);
+				$connect->query("delete from carts where carts.id = $itemId");
+				header("location: ?option=cart");
 				break;
 			case'deleteall':
-				unset($_SESSION['cart']);
+				$connect->query("delete from carts where carts.memberid = $memberid");
 				break;
 			case'update':
-			if($_GET['type']=='asc')
-				$_SESSION['cart'][$id]++;
-			else
-				if($_SESSION['cart'][$id]>1)
-				$_SESSION['cart'][$id]--;
+			if($_GET['type']=='asc') {
+				$connect->query("update carts set quantity=quantity+1 where productid = $itemId");
+			} else {
+				$connect->query("update carts set quantity=quantity-1 where productid = $itemId");
+			}
 			header("location: ?option=cart");
 			break;
 		case'order':
@@ -45,18 +50,19 @@ if(empty($_SESSION['cart'])){
 	}
 ?>
 
+
 <section class="cart" style="min-height: 88vh;">
 <?php 
-if(!empty($_SESSION['cart'])):
-	$ids= implode(',', array_keys($_SESSION['cart']));
-	$queryProducts="select*from products where id in($ids)";
-	$resultProducts=$connect->query($queryProducts);
-
 	$nameUser = $_SESSION['member'];
 	$idUser = "select*from member where fullname = ('$nameUser')";
 	$resultUser = mySqli_fetch_array($connect->query($idUser))['id'];
+	$issetCart = "select count(memberid) from carts where carts.memberid = '$resultUser'";
+	$queryissetCart = mysqli_fetch_assoc($connect->query($issetCart));
 
-	$queryResult = "select products.id, products.name, products.image, products.price from products join carts on products.id = carts.productid where carts.memberid = '$resultUser'";
+if( $queryissetCart >= 1 ):
+	$queryResult = "select products.id, products.name, products.image, products.price, 
+	carts.id as cartid, carts.quantity as cartQuantity from products join carts 
+	on products.id = carts.productid where carts.memberid = '$resultUser'";
 	$result = $connect->query($queryResult);
 	
 ?>
@@ -79,10 +85,13 @@ if(!empty($_SESSION['cart'])):
 ?>
 			<tr>
 				<td width="20%"><img width="100%" src="images/<?=$item['image']?>"></td>
-				<td><?=$item['name']?><br><input type="button" value="Delete" onclick="location='?option=cart&action=delete&id=<?=$item['id']?>';"></td>
+				<td><?=$item['name']?><br><input type="button" value="Delete" onclick="location='?option=cart&action=delete&id=<?=$item['cartid']?>';"></td>
 				<td><?=number_format($item['price'],0,',','.')?></td>
-				<td><?=$_SESSION['cart'][$item['id']]?> <input type="button" value="+" onclick="location='?option=cart&action=update&type=asc&id=<?=$item['id']?>';"> <input type="button" value="-" onclick="location='?option=cart&action=update&type=desc&id=<?=$item['id']?>';"></td> 
-				<td><?=number_format($subTotal=$item['price']*$_SESSION['cart'][$item['id']],0,',','.')?></td>
+				<td><?=$item['cartQuantity']?> 
+					<input type="button" value="+" onclick="location='?option=cart&action=update&type=asc&id=<?=$item['id']?>';">
+				 	<input type="button" value="-" onclick="location='?option=cart&action=update&type=desc&id=<?=$item['id']?>';">
+				</td> 
+				<td><?=number_format($subTotal=$item['price']*$item['cartQuantity'],0,',','.')?> VND</td>
 			</tr>
 			<?php $toTal+=$subTotal;
 				$thue=$toTal*3/100;
