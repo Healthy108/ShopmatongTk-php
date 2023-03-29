@@ -4,10 +4,10 @@ if(empty($_SESSION['cart'])){
 }
 	if(isset($_GET['action'])){
 		$id=isset($_GET['id'])?$_GET['id']:'';
-		$itemId = $_GET['id'];
 		$nameUser = $_SESSION['member'];
 		$idUser = "select*from member where fullname = ('$nameUser')";
 		$memberid = mySqli_fetch_array($connect->query($idUser))['id'];
+		$itemId = $_GET['id'];
 
 		switch($_GET['action']){
 			case'add':
@@ -34,6 +34,7 @@ if(empty($_SESSION['cart'])){
 			if($_GET['type']=='asc') {
 				$connect->query("update carts set quantity=quantity+1 where productid = $itemId");
 			} else {
+			    
 				$connect->query("update carts set quantity=quantity-1 where productid = $itemId");
 			}
 			header("location: ?option=cart");
@@ -56,15 +57,14 @@ if(empty($_SESSION['cart'])){
 	$nameUser = $_SESSION['member'];
 	$idUser = "select*from member where fullname = ('$nameUser')";
 	$resultUser = mySqli_fetch_array($connect->query($idUser))['id'];
-	$issetCart = "select count(memberid) from carts where carts.memberid = '$resultUser'";
-	$queryissetCart = mysqli_fetch_assoc($connect->query($issetCart));
+	$issetCart = "select * from carts where carts.memberid = '$resultUser'";
+	$queryissetCart = mySqli_fetch_array($connect->query($issetCart));
 
-if( $queryissetCart >= 1 ):
-	$queryResult = "select products.id, products.name, products.image, products.price, 
-	carts.id as cartid, carts.quantity as cartQuantity from products join carts 
-	on products.id = carts.productid where carts.memberid = '$resultUser'";
-	$result = $connect->query($queryResult);
-	
+	if(isset($queryissetCart) ):
+		$queryResult = "select products.id, products.name, products.image, products.price, 
+		carts.id as cartid, carts.quantity as cartQuantity from products join carts 
+		on products.id = carts.productid where carts.memberid = '$resultUser'";
+		$result = $connect->query($queryResult);	
 ?>
 	<table border="1px" width="100%" cellpadding="0" cellspacing="0" style="text-align: center;">
 		<thead>
@@ -110,7 +110,7 @@ if( $queryissetCart >= 1 ):
 		</tbody>
 	</table>
 <?php
-else:
+else: 
 ?>
 	<section style="text-align: center; color: red; font-size: 30px; padding: 50px; font-weight: bold;">Giỏ hàng trống !</section>
 <?php
