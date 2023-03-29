@@ -1,6 +1,6 @@
 <!-- apps contact -->
-<div style="background: #000; padding: 30px; color: #fff">
-    <div style="display: flex; justify-content: space-between;">
+<div style="background: #000; padding: 30px; color: #fff;">
+    <div class="contacts">
         <div>
             <h2>LIÊN HỆ VỚI CHÚNG TÔI</h2>
             <p>
@@ -69,3 +69,16 @@
 <div style="padding: 10px; text-align: center; background-color: rgb(43,18,17); color: #fff">
     <span>© 2023 Shop Mật Ong TK - Sản Phẩm Thật Chất Lượng Thật - Thiết kế bởi tuankhanh102</span>
 </div>
+
+<style>
+    .contacts {
+        display: flex;
+        justify-content: space-between;
+    }
+    @media (max-width: 450px) {
+        .contacts {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+</style>

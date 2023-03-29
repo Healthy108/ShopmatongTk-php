@@ -12,15 +12,20 @@ if(isset($_POST['username'])){
 			$alert="Tài khoản của bạn đang bị khóa hoặc đang trong quá trình xử lý!";
 		}else{
 			$_SESSION['member']=$username;
-			// echo"<script>location='?option=home';</script>";
 			if(isset($_GET['order'])){
 				header("location: ?option=order");
-			}elseif($_GET['productId']){
+			}elseif(isset($_GET['productId'])){
 				$memberid=$result['id'];
 				$productId=$_GET['productId'];
 				$content=$_SESSION['content'];
 				$connect->query("insert comments(memberid,productId,date,content) values($memberid,$productId,now(),'$content')");
 			echo"<script>alert('Chúc mừng bạn đã comment thành công, comment của bạn sẽ sớm được hiển thị!'); location='?option=productdetail&id=$productId';</script>";
+			}
+			elseif(isset($_GET['id'])){
+				$memberid=$result['id'];
+				$productid=$_GET['id'];
+				$connect->query("insert carts(memberid,productid) values($memberid,$productid)");
+			header('location: ?option=cart');
 			}else{
 			header('location: ?option=home');
 			}

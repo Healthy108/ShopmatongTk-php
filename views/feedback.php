@@ -1,5 +1,4 @@
 
-
 <!-- TOP- Products -->
 <section class="review">
     <div class="swiper review-slider">
@@ -62,10 +61,12 @@
     </div>
 </section>
 
-<section>
-    <div class="dialog-btn"><p style="text-align: center;">Mọi bài đánh giá SHOP vui lòng gửi về đường mail: <a href="mailto:tuankhanh668sdtq@gmail.com"  class="dialog-btn">tuankhanh668sdtq@gmail.com</a></p></p>
-    <p style="text-align: center;">Xin cảm ơn quý khách!</p></div>
-</section>
+<div>
+    <p style="text-align: center">Mọi bài đánh giá SHOP vui lòng gửi về đường mail:
+        <a href="mailto:tuankhanh668sdtq@gmail.com">tuankhanh668sdtq@gmail.com</a>
+        <p style="text-align: center">Xin cảm ơn quý khách!</p>
+    </p>
+</div>
 
 <section class="review" id="review">
     <div class="swiper review-slider">
@@ -128,8 +129,30 @@
     </div>
 </section>
 
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="script1.js"></script>
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".review-slider", {
+    loop:true,
+    spaceBetween: 100,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    centereedSlides: true,
+    breakpoints: {
+        0: {
+        slidesPerView: 1,
+        },
+        768: {
+        slidesPerView: 2,
+        },
+        1020: {
+        slidesPerView: 3,
+        },
+    },
+    });
+
+</script>
 
 <style>
     .review .review-slider{

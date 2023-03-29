@@ -1,6 +1,10 @@
-<iframe width="100%" height="598" src="https://www.youtube.com/embed/0eI7-70KfC0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
-
-
+<iframe 
+    width="100%" height="598" 
+    src="https://www.youtube.com/embed/0eI7-70KfC0" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen >
+</iframe>
 
 <link rel="stylesheet" type="text/css" href="css/cssToastmess.css">
     <div id="toast"></div>

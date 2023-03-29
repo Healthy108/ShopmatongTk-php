@@ -14,6 +14,7 @@
   	$query.=" and price<=".$_GET['range'];
   	$option='showproducts&range='.$_GET['range'];
     }
+
   
     //$page: xem casc san pham o trang so bao nhieu?
     $page=1;
@@ -31,16 +32,16 @@
     //lấy các sản phẩm ở trang hiện thời
     $query.=" limit $from,$productsperpage";
     $result=$connect->query($query);
-  
-    $checkUser = isset($_SESSION['member']) ? '?option=cart' : '?option=signin'
-  
+
   ?>
   
   <?php if(mySqli_num_rows($result) == 0):?>
   	<section style="text-align: center; margin-top: 30px; font-weight: bold; font-size: 30px;">Không tìm thấy sản phẩm!</section>
   <?php else: ?>
   <section>
-  	<?php foreach($result as $item):?>
+  	<?php foreach($result as $item):
+      $checkUser = isset($_SESSION['member']) ? '?option=cart' : '?option=signin'
+    ?>
   		<section class="product">
   			<section class="img"><a href="?option=productdetail&id=<?=$item['id']?>"><img src="images/<?=$item['image']?>"></a></section>
   			<section class="name"><?=$item['name']?></section>
@@ -48,7 +49,6 @@
   			<section>
           <!-- <input type="button" value="Đặt mua" onclick="location='?option=cart&action=add&id=<?=$item['id']?>';"> -->
           <input type="button" value="Đặt mua" onclick="location='<?=$checkUser?>&action=add&id=<?=$item['id']?>'">
-  
         </section>
   		</section>
   	<?php endforeach;?>

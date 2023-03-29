@@ -26,8 +26,9 @@
 
   <!-- Search -->
   <form autocomplete class="search"> 
-      <input autocomplete="on" type="search" name="keyword" value="<?=isset($_GET['keyword'])?$_GET['keyword']:""?>" placeholder="Enter keywords!"><br>
-      <input type="submit" value="Search" href="#products">
+      <input autocomplete="on" type="search" name="keyword" value="<?=isset($_GET['keyword'])?$_GET['keyword']:""?>" placeholder="Enter keywords!" >
+      <br>
+      <input type="submit" value="Search">
   </form>
 
   <!-- menu top -->

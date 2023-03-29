@@ -1,13 +1,18 @@
 <?php
-
 if(empty($_SESSION['cart'])){
 	$_SESSION['cart']=array();
 }
 	if(isset($_GET['action'])){
 		$id=isset($_GET['id'])?$_GET['id']:'';
+
 		switch($_GET['action']){
 			case'add':
-				if(array_key_exists($id, array_keys($_SESSION['cart']))){
+				if(isset($_GET['id'])){
+					$nameUser = $_SESSION['member'];
+					$idUser = "select*from member where fullname = ('$nameUser')";
+					$memberid = mySqli_fetch_array($connect->query($idUser))['id'];
+					$productid=$_GET['id'];
+					$connect->query("insert carts(memberid,productid) values($memberid,$productid)");
 					$_SESSION['cart'][$id]=1;
 				}else{
 					$_SESSION['cart'][$id]++;
@@ -39,16 +44,21 @@ if(empty($_SESSION['cart'])){
 		}
 	}
 ?>
+
 <section class="cart" style="min-height: 88vh;">
 <?php 
 if(!empty($_SESSION['cart'])):
-	// $ids="0";
-	// foreach(array_keys($_SESSION['cart']) as $key)
-	// $ids.=",".$key;
 	$ids= implode(',', array_keys($_SESSION['cart']));
-	// $query="select*from products where id in($ids)";
-	$query="select*from products where id in($ids)";
-	$result=$connect->query($query);
+	$queryProducts="select*from products where id in($ids)";
+	$resultProducts=$connect->query($queryProducts);
+
+	$nameUser = $_SESSION['member'];
+	$idUser = "select*from member where fullname = ('$nameUser')";
+	$resultUser = mySqli_fetch_array($connect->query($idUser))['id'];
+
+	$queryResult = "select products.id, products.name, products.image, products.price from products join carts on products.id = carts.productid where carts.memberid = '$resultUser'";
+	$result = $connect->query($queryResult);
+	
 ?>
 	<table border="1px" width="100%" cellpadding="0" cellspacing="0" style="text-align: center;">
 		<thead>
@@ -93,7 +103,7 @@ if(!empty($_SESSION['cart'])):
 <?php
 else:
 ?>
-	<section style="text-align: center; color: red; font-size: 30px; margin-top: 40px; font-weight: bold;">Giỏ hàng trống !</section>
+	<section style="text-align: center; color: red; font-size: 30px; padding: 50px; font-weight: bold;">Giỏ hàng trống !</section>
 <?php
 endif;
 ?>

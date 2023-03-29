@@ -98,7 +98,7 @@
         <span>Tại sao bạn nên sử dụng mật ong?</span>
         <h3>Mật ong có rất nhiều lợi ích</h3>
         <p>Mật ong chứa nhiều dưỡng chất có lợi cho sức khỏe, Mật ong thô giàu chất chống oxy hóa, Chất chống oxy hóa trong mật ong tốt cho sức khỏe tim mạch, Mật ong giúp vết thương nhanh lành, Tất cả đều tuyệt vời!!!.</p>
-        <a href="#" class="btn">Xem thêm</a>
+        <a href="?option=news" class="btn">Xem thêm</a>
     </div>
     
     <script>
@@ -111,5 +111,5 @@
 
 <!-- script -->
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-<script src="script1.js"></script>
+<script src="script.js"></script>
 
