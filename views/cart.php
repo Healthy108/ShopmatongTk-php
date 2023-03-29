@@ -3,11 +3,10 @@ if(empty($_SESSION['cart'])){
 	$_SESSION['cart']=array();
 }
 	if(isset($_GET['action'])){
-		$id=isset($_GET['id'])?$_GET['id']:'';
 		$nameUser = $_SESSION['member'];
 		$idUser = "select*from member where fullname = ('$nameUser')";
 		$memberid = mySqli_fetch_array($connect->query($idUser))['id'];
-		$itemId = $_GET['id'];
+		isset($_GET['id']) ? $itemId = $_GET['id'] : '';
 
 		switch($_GET['action']){
 			case'add':
@@ -34,7 +33,6 @@ if(empty($_SESSION['cart'])){
 			if($_GET['type']=='asc') {
 				$connect->query("update carts set quantity=quantity+1 where productid = $itemId");
 			} else {
-			    
 				$connect->query("update carts set quantity=quantity-1 where productid = $itemId");
 			}
 			header("location: ?option=cart");
