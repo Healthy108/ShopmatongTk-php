@@ -7,18 +7,19 @@ if(empty($_SESSION['cart'])){
 		$idUser = "select*from member where fullname = ('$nameUser')";
 		$memberid = mySqli_fetch_array($connect->query($idUser))['id'];
 		isset($_GET['id']) ? $itemId = $_GET['id'] : '';
+		$quantityInCart = "select quantity from carts where productid = $itemId";
+		$queryQuantity = mySqli_fetch_array($connect->query($quantityInCart));
 
 		switch($_GET['action']){
 			case'add':
 				$productid=$_GET['id'];
 				$itemId = $_GET['id'];
 				$issetProductId = "select*from carts where carts.productid = $itemId and carts.memberid = $memberid";
-				$queryCart = mySqli_fetch_array($connect->query($issetProductId));
-				// querycarts chưa bắt được id member, nên tạm code cứng = 1.
+				$queryCart = mySqli_fetch_array($connect->query($issetProductId))['productid'];
 				if (empty($queryCart)) {
 						$connect->query("insert carts(memberid,productid) values($memberid,$productid)");
 				} else {
-					$connect->query("update carts set quantity=quantity+1 where productid = 1");
+					$connect->query("update carts set quantity=quantity+1 where productid = $queryCart");
 				}
 				header("location: ?option=cart");
 				break;
@@ -33,7 +34,11 @@ if(empty($_SESSION['cart'])){
 			if($_GET['type']=='asc') {
 				$connect->query("update carts set quantity=quantity+1 where productid = $itemId");
 			} else {
-				$connect->query("update carts set quantity=quantity-1 where productid = $itemId");
+				if ($queryQuantity['quantity'] <= 1) {
+					$connect->query("delete from carts where carts.productid = $itemId");
+				} else {
+					$connect->query("update carts set quantity=quantity-1 where productid = $itemId");
+				}				
 			}
 			header("location: ?option=cart");
 			break;
@@ -59,7 +64,7 @@ if(empty($_SESSION['cart'])){
 	$queryissetCart = mySqli_fetch_array($connect->query($issetCart));
 
 	if(isset($queryissetCart) ):
-		$queryResult = "select products.id, products.name, products.image, products.price, 
+		$queryResult = "select products.id as productId, products.name, products.image, products.price, 
 		carts.id as cartid, carts.quantity as cartQuantity from products join carts 
 		on products.id = carts.productid where carts.memberid = '$resultUser'";
 		$result = $connect->query($queryResult);	
@@ -86,8 +91,8 @@ if(empty($_SESSION['cart'])){
 				<td><?=$item['name']?><br><input type="button" value="Delete" onclick="location='?option=cart&action=delete&id=<?=$item['cartid']?>';"></td>
 				<td><?=number_format($item['price'],0,',','.')?></td>
 				<td><?=$item['cartQuantity']?> 
-					<input type="button" value="+" onclick="location='?option=cart&action=update&type=asc&id=<?=$item['id']?>';">
-				 	<input type="button" value="-" onclick="location='?option=cart&action=update&type=desc&id=<?=$item['id']?>';">
+					<input type="button" value="+" onclick="location='?option=cart&action=update&type=asc&id=<?=$item['productId']?>';">
+				 	<input type="button" value="-" onclick="location='?option=cart&action=update&type=desc&id=<?=$item['productId']?>';">
 				</td> 
 				<td><?=number_format($subTotal=$item['price']*$item['cartQuantity'],0,',','.')?> VND</td>
 			</tr>
