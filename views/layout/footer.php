@@ -25,9 +25,12 @@
     
         <div>
             <h2>ĐĂNG KÝ NHẬN TIN ƯU ĐÃI</h2>
-            <input type="email" placeholder="Nhập email...">
+            <div style="display: flex; justify-content: space-between;">
+                <input type="email" placeholder="Nhập email...">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
             <hr>
-            <h4>Hãy nhập email của bạn vào đây để nhận tin</h4>
+            <h4>Hãy nhập email của bạn vào đây để nhận tin </h4>
             <a href="https://www.facebook.com/tuans.khanh.198/">
                 <img src="https://media4.s-nbcnews.com/j/streams/2013/december/131203/2d9839980-facebooklogo.nbcnews-fp-1200-800.jpg"  height="22px">
             </a>

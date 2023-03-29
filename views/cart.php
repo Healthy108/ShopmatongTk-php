@@ -6,51 +6,51 @@ if(empty($_SESSION['cart'])){
 		$nameUser = $_SESSION['member'];
 		$idUser = "select*from member where fullname = ('$nameUser')";
 		$memberid = mySqli_fetch_array($connect->query($idUser))['id'];
-		isset($_GET['id']) ? $itemId = $_GET['id'] : '';
-		$quantityInCart = "select quantity from carts where productid = $itemId";
-		$queryQuantity = mySqli_fetch_array($connect->query($quantityInCart));
-
-		switch($_GET['action']){
-			case'add':
-				$productid=$_GET['id'];
-				$itemId = $_GET['id'];
-				$issetProductId = "select*from carts where carts.productid = $itemId and carts.memberid = $memberid";
-				$queryCart = mySqli_fetch_array($connect->query($issetProductId))['productid'];
-				if (empty($queryCart)) {
-						$connect->query("insert carts(memberid,productid) values($memberid,$productid)");
+			switch($_GET['action']){
+				case'add':
+					$productid=$_GET['id'];
+					$itemId = $_GET['id'];
+					$issetProductId = "select*from carts where carts.productid = $itemId and carts.memberid = $memberid";
+					$queryCart = mySqli_fetch_array($connect->query($issetProductId))['productid'];
+					if (empty($queryCart)) {
+							$connect->query("insert carts(memberid,productid) values($memberid,$productid)");
+					} else {
+						$connect->query("update carts set quantity=quantity+1 where productid = $queryCart");
+					}
+					header("location: ?option=cart");
+					break;
+				case'delete':
+					$itemId = $_GET['id'];
+					$connect->query("delete from carts where carts.id = $itemId");
+					header("location: ?option=cart");
+					break;
+				case'deleteall':
+					$connect->query("delete from carts where carts.memberid = $memberid");
+					break;
+				case'update':
+					$itemId = $_GET['id'];
+					$quantityInCart = "select quantity from carts where productid = $itemId";
+					$queryQuantity = mySqli_fetch_array($connect->query($quantityInCart));
+				if($_GET['type']=='asc') {
+					$connect->query("update carts set quantity=quantity+1 where productid = $itemId");
 				} else {
-					$connect->query("update carts set quantity=quantity+1 where productid = $queryCart");
+					if ($queryQuantity['quantity'] <= 1) {
+						$connect->query("delete from carts where carts.productid = $itemId");
+					} else {
+						$connect->query("update carts set quantity=quantity-1 where productid = $itemId");
+					}				
 				}
 				header("location: ?option=cart");
 				break;
-			case'delete':
-				$connect->query("delete from carts where carts.id = $itemId");
-				header("location: ?option=cart");
-				break;
-			case'deleteall':
-				$connect->query("delete from carts where carts.memberid = $memberid");
-				break;
-			case'update':
-			if($_GET['type']=='asc') {
-				$connect->query("update carts set quantity=quantity+1 where productid = $itemId");
-			} else {
-				if ($queryQuantity['quantity'] <= 1) {
-					$connect->query("delete from carts where carts.productid = $itemId");
-				} else {
-					$connect->query("update carts set quantity=quantity-1 where productid = $itemId");
-				}				
-			}
-			header("location: ?option=cart");
+			case'order':
+				if(isset($_SESSION['member'])){
+					header("location: ?option=order");
+				}else{
+					header("location: ?option=signin&order=1");
+				}
 			break;
-		case'order':
-			if(isset($_SESSION['member'])){
-				header("location: ?option=order");
-			}else{
-				header("location: ?option=signin&order=1");
-			}
-		break;
 
-		}
+			}
 	}
 ?>
 
@@ -107,7 +107,11 @@ if(empty($_SESSION['cart'])){
 			<td colspan="5" style="padding: 20px;">
 				<section>Tổng tiền: <?=number_format($toTal,0,',','.')?> VND</section>
 				<section>Thuế: <?=number_format($thue,0,',','.')?> VND</section>
-				<section><input type="button" value="Delete Cart" onclick="if(confirm('Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng?'))location='?option=cart&action=deleteall';"> <input type="button" value="Đặt hàng" onclick="location='?option=cart&action=order';"></section>
+				<section>
+					<input type="button" value="Delete Cart" 
+						onclick="if(confirm('Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng?'))location='?option=cart&action=deleteall';">
+					<input type="button" value="Đặt hàng" onclick="location='?option=cart&action=order';">
+				</section>
 			</td>
 		</tr>
 		</tbody>
