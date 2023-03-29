@@ -18,7 +18,8 @@
 		$query="select*from products where id=".$_GET['id'];
 		$result=$connect->query($query);
 		$item=mySqli_fetch_array($result);
-	endif;
+	endif; 
+	$checkUser = isset($_SESSION['member']) ? '?option=cart' : '?option=signin'
 ?>
 <section style="text-align: center;">
 	<h1><?=$item['name']?></h1>
@@ -27,7 +28,10 @@
 			<section><a href="?option=productdetail&id=<?=$item['id']?>"><img src="images/<?=$item['image']?>" width = 100%></a></section>
 			<section><?=$item['name'] ?></section>
 			<section><?=number_format($item['price'],0,',','.') ?> VNĐ</section>
-			<section><input type="button" value="Đặt mua" onclick="location='?option=cart&action=add&id=<?=$item['id']?>';"></section>
+			<section>
+				<!-- <input type="button" value="Đặt mua" onclick="location='?option=cart&action=add&id=<?=$item['id']?>';"> -->
+				<input type="button" value="Đặt mua" onclick="location='<?=$checkUser?>&action=add&id=<?=$item['id']?>'">
+			</section>
 	</section>
 	<hr>
 	<section><?=$item['description']?></section>
