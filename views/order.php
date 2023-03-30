@@ -19,15 +19,19 @@
 			$connect->query($query);
 			$query="select id from orders order by id desc limit 1";
 			$orderid=mySqli_fetch_array($connect->query($query))['id'];
-			foreach($_SESSION['cart'] as $key=>$value){
-				$productid=$key;
-				$number=$value;
-				$query="select price from products where id=$key";
+
+			$carts = "select * from carts where memberid = $memberid";
+			$queryCarts = ($connect->query($carts));
+
+			foreach($queryCarts as $value){
+				$productid=$value['productid'];
+				$number=$value['quantity'];
+				$query="select price from products where id=$productid";
 				$price=mySqli_fetch_array($connect->query($query))['price'];
-				$query="insert orderdetail values($productid,$orderid,$number,$price)";
+				$query="insert orderdetail values('$productid','$orderid','$number','$price')";
 				$connect->query($query);
 			}
-			unset($_SESSION['cart']);
+			$connect->query("delete from carts where carts.memberid = $memberid");
 			header("location: ?option=ordersuccess");
 	
 		}
@@ -61,7 +65,9 @@
 	<div style="text-align: center;">
 	<select name="ordermethodid">
 	<?php foreach($result as $item):?>
-		<option value="<?=$item['id']?>"><?=$item['name']?></option>
+		<option value="<?=$item['id']?>">
+			<?=$item['name']?>
+		</option>
 	<?php endforeach;?>
 	</select>
 	<section>

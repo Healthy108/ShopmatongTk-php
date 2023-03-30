@@ -17,7 +17,9 @@
 ?>
 
 <?php
-	$query="select a.fullname,a.mobile as 'mobilemember',a.address as 'addressmember' ,a.email as 'emailmember',b.*,c.name as 'nameordermethod' from member a join orders b on a.id=b.memberid join ordermethod c on b.ordermethodid=c.id where b.id=".$_GET['id'];
+	$query="select a.fullname,a.mobile as 'mobilemember',a.address as 'addressmember' ,a.email as 'emailmember',
+	b.*,c.name as 'nameordermethod' from member a join orders b on a.id=b.memberid join ordermethod c 
+	on b.ordermethodid=c.id where b.id=".$_GET['id'];
 	$order=mySqli_fetch_array($connect->query($query));
  ?>
  <h1>CHI TIẾT ĐƠN HÀNG<br>(Mã đơn hàng: <?=$order['id']?>)</h1>
@@ -72,8 +74,12 @@
  <h2>Phương thức thanh toán</h2>
  <p><?=$order['nameordermethod']?></p>
  <?php
- 	$query="select b.*,c.name,c.image from orders a join orderdetail b on a.id=b.orderid join products c on b.productid=c.id where a.id=".$order['id'];
- 	$orderdetails=$connect->query($query);
+ 	// $query="select b.*,c.name,c.image from orders a join orderdetail b 
+	// on a.id=b.orderid join products c on b.productid=c.id where a.id=".$order['id'];
+ 	// $orderdetails=$connect->query($query);
+	 $query="select b.*,c.name,c.image from orders a join orderdetail b 
+	 on a.id=b.orderid join products c on b.productid=c.id where a.id=".$order['id'];
+	  $orderdetails=$connect->query($query);
 ?>
 <form method="post">
 	<h2>Các sản phẩm đặt mua</h2>
