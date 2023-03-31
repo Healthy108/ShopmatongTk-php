@@ -9,10 +9,10 @@
       <a href="?option=news">News</a>
       <a href="?option=feedback">FeedBack</a>
       <?php if(empty($_SESSION['member'])):?>
-      <a href="?option=cart">Cart</a>
-      <a href="?option=signin">Signin</a>
-      <a href="?option=register">Register</a>
-      <?php else:?>
+        <a href="?option=signin">Signin</a>
+        <a href="?option=register">Register</a>
+        <?php else:?>
+          <a href="?option=cart">Cart</a>
         <section><a href="?option=logout">LogOut</a></section>
       <?php endif;?>
     </div>
