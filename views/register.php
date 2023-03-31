@@ -21,7 +21,7 @@
 
 <section class="register">
 
-	<h2 style="text-align: center; font-size: 30px; margin-top: 30px;">Đăng ký tài khoản</h2>
+	<h2 style="text-align: center; font-size: 30px; padding-top: 50px">Đăng ký tài khoản</h2>
 	
 	<section>
 		<section><?=isset($alert)?$alert:""?></section>

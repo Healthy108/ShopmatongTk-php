@@ -36,7 +36,7 @@ if(isset($_POST['username'])){
 <section style="text-align: center; color: black; min-height: 100vh; margin-top: -35px;
 		background: url(https://ongvietnam.vn/wp-content/uploads/2019/02/banner-mat-ong-1.jpg) no-repeat;
 		background-size: cover;">
-	<h2 style="line-height: 50px; font-size: 30px;">Đăng nhập tài khoản</h2>
+	<h2 style="line-height: 50px; font-size: 30px; padding-top: 50px">Đăng nhập tài khoản</h2>
 	<section><?=isset($alert)?$alert:""?></section>
 	<section>
 		<form method="post">

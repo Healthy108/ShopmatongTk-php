@@ -20,14 +20,42 @@
                             <div class="i fas fa-star"></div>
                         </div>'
                         : 
+                        ''
+                    ?> ;
+                    <?=$item['starts'] == 4 ? 
                         '<div class="stars">
                             <div class="i fas fa-star"></div>
                             <div class="i fas fa-star"></div>
                             <div class="i fas fa-star"></div>
                             <div class="i fas fa-star"></div>
-                            <div class="i fas fa-star-half-alt"></div>
                         </div>'
-                    ?>
+                        : 
+                        ''
+                    ?> ;
+                    <?=$item['starts'] == 3 ? 
+                        '<div class="stars">
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                        </div>'
+                        : 
+                        ''
+                    ?>;
+                    <?=$item['starts'] == 2 ? 
+                        '<div class="stars">
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                        </div>'
+                        : 
+                        ''
+                    ?>;
+                    <?=$item['starts'] == 1 ? 
+                        '<div class="stars">
+                            <div class="i fas fa-star"></div>
+                        </div>'
+                        : 
+                        ''
+                    ?>;
                 </div>
             <?php endforeach; ?>
         </div>
@@ -64,14 +92,45 @@
                             <div class="i fas fa-star"></div>
                         </div>'
                         : 
+                        ''
+                    ?> ;
+                    <?=$item['starts'] == 4 ? 
                         '<div class="stars">
                             <div class="i fas fa-star"></div>
                             <div class="i fas fa-star"></div>
                             <div class="i fas fa-star"></div>
                             <div class="i fas fa-star"></div>
-                            <div class="i fas fa-star-half-alt"></div>
                         </div>'
-                    ?>
+                        : 
+                        ''
+                    ?> ;
+                    <?=$item['starts'] == 3 ? 
+                        '<div class="stars">
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                        </div>'
+                        : 
+                        ''
+                    ?>;
+                    <?=$item['starts'] == 2 ? 
+                        '<div class="stars">
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                        </div>'
+                        : 
+                        ''
+                    ?>;
+                    <?=$item['starts'] == 1 ? 
+                        '<div class="stars">
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                        </div>'
+                        : 
+                        ''
+                    ?>;
                 </div>
             <?php endforeach; ?>
         </div>

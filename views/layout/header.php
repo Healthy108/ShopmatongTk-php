@@ -41,9 +41,11 @@
       <?php else:?>
         <a href="?option=cart"><b>CART <i class="fas fa-shopping-cart"></i></b></a>
     		<section class="hellomember">
-          <span style="color: red; font-weight: bold;">
-          <b style="color: #000;">Hello:</b> 
-          <?=$_SESSION['member']?></span> [<a href="?option=logout">Logout</a>]
+          <span style="color: red; font-weight: bold; cursor: pointer" onclick="location='?option=user'"> 
+            <b style="color: #000;">Hello:</b> 
+            <?=$_SESSION['member']?>
+          </span> 
+          [<a href="?option=logout">Logout</a>]
         </section>
     	<?php endif; ?>
   

@@ -6,4 +6,4 @@
     Xin cảm ơn! ♥
 </section>
 
-<img style="margin-left: 300px; margin-top: 30px;" src="images/Hinh-anh-dong-Powerpoint-tam-biet.jpg" height="300" width="300">
+<img style="display: block; margin-left: auto; margin-right: auto;" src="images/Hinh-anh-dong-Powerpoint-tam-biet.jpg" height="300" width="300">

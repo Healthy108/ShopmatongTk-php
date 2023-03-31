@@ -13,6 +13,10 @@
 			case'showproducts':include"views/showproducts.php";break;
 			case'order':include"views/order.php";break;
 			case'ordersuccess': include"views/ordersuccess.php";break;
+			case'user':include"views/user/profile.php";break;
+			case'edituser':include"views/user/edituser.php";break;
+			case'changepassword':include"views/user/changepassword.php";break;
+
 		endswitch;
 	else:
 		include"views/home.php";
