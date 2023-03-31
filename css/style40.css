@@ -10,6 +10,9 @@
 
 .register {
   min-height: 88vh;
+  margin-top: -35px;
+  background: url(https://matongcuongnga.vn/wp-content/uploads/2019/01/banner-02.jpg) no-repeat;
+  background-size: cover;
 }
 
 .register label {

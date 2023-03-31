@@ -36,7 +36,16 @@
   ?>
   
   <?php if(mySqli_num_rows($result) == 0):?>
-  	<section style="text-align: center; margin-top: 30px; font-weight: bold; font-size: 30px;">Không tìm thấy sản phẩm!</section>
+  	<section 
+      style="display: flex;
+      align-items: center;
+      flex-direction: column-reverse;
+      font-weight: bold;
+      margin-bottom: 68px;
+      font-size: 30px;
+      min-height: 20vh;">
+      Không tìm thấy sản phẩm!
+    </section>
   <?php else: ?>
   <section>
   	<?php foreach($result as $item):

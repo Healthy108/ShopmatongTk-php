@@ -4,6 +4,7 @@
 			case'home':include"views/home.php"; break;
 			case'news':include"views/news.php";break;
 			case'feedback':include"views/feedback.php";break;
+			case'writefeedback':include"views/writefeedback.php";break;
 			case'cart':include"views/cart.php";break;
 			case'signin':include"views/signin.php";break;
 			case'register':include"views/register.php";break;

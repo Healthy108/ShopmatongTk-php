@@ -8,8 +8,8 @@
       <a href="?option=home">Home</a>
       <a href="?option=news">News</a>
       <a href="?option=feedback">FeedBack</a>
-      <a href="?option=cart">Cart</a>
       <?php if(empty($_SESSION['member'])):?>
+      <a href="?option=cart">Cart</a>
       <a href="?option=signin">Signin</a>
       <a href="?option=register">Register</a>
       <?php else:?>
@@ -24,8 +24,8 @@
       <a href="?option=home"><h1>SHOP*TK</h1></a>
   </div>
 
-  <!-- Search -->
-  <form autocomplete class="search"> 
+  <!-- Search --> 
+  <form autocomplete class="search" action="#products"> 
       <input autocomplete="on" type="search" name="keyword" value="<?=isset($_GET['keyword'])?$_GET['keyword']:""?>" placeholder="Enter keywords!" >
       <br>
       <input type="submit" value="Search">

@@ -66,8 +66,8 @@
         }
 
         toast({
-            title:'Success',
-            message: 'Im coming - Tuấn Khanh đang ở đây !',
+            title:'Xin chào',
+            message: 'Chúc bạn ngày mới tốt lành <3 !',
             type: 'success',
             duration: 5000
         });

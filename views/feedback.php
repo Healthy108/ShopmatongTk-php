@@ -1,131 +1,80 @@
+<?php
+    $resultFeedBack = "select * from feedbacks";
+    $queryResultFeedBack = $connect->query($resultFeedBack);
+?>
 
-<!-- TOP- Products -->
 <section class="review">
     <div class="swiper review-slider">
-
         <div class="swiper-wrapper">
-            <div class="swiper-slide box">
-                <img src="images/tuankhanh.jpg" alt="">
-                <p>Nice SHOP!!</p>
-                <h3>Tuấn Khanh</h3>
-                <div class="stars">
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star-half-alt"></div>
+            <?php foreach($queryResultFeedBack as $item):?>
+                <div class="swiper-slide box">
+                    <img src="images/<?=$item['image']?>">
+                    <p><?=$item['contentFeedBack']?></p>
+                    <h3><?=$item['username']?></h3>
+                    <?=$item['starts'] == 5 ? 
+                        '<div class="stars">
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                        </div>'
+                        : 
+                        '<div class="stars">
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star-half-alt"></div>
+                        </div>'
+                    ?>
                 </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="images/sontung.jpg" alt="">
-                <p>Amazinggg!!</p>
-                <h3>ST-MTP</h3>
-                <div class="stars">
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="images/bumblee.jpg" alt="">
-                <p>Greate !!</p>
-                <h3>Bumblee</h3>
-                <div class="stars">
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star-half-alt"></div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="images/tuankhanh.jpg" alt="">
-                <p>Woww..Love Shopp!</p>
-                <h3>Ngọc Trinh</h3>
-                <div class="stars">
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star-half-alt"></div>
-                </div>
-            </div>
-
+            <?php endforeach; ?>
         </div>
-
     </div>
 </section>
 
 <div>
+    <?php
+        $checkUser = isset($_SESSION['member']) ? '?option=writefeedback' : '?option=signin'
+    ?>
     <p style="text-align: center">Mọi bài đánh giá SHOP vui lòng gửi về đường mail:
         <a href="mailto:tuankhanh668sdtq@gmail.com">tuankhanh668sdtq@gmail.com</a>
+        <p style="text-align: center; cursor: pointer; color: blue;">
+            <a onclick="location='<?=$checkUser?>'">Hoặc gửi tại đây!</a>
+        </p>
         <p style="text-align: center">Xin cảm ơn quý khách!</p>
     </p>
 </div>
 
-<section class="review" id="review">
+<section class="review">
     <div class="swiper review-slider">
-
         <div class="swiper-wrapper">
-            <div class="swiper-slide box">
-                <img src="images/bumblee.jpg" alt="">
-                <p>Nice SHOP!!</p>
-                <h3>Tuấn Khanh</h3>
-                <div class="stars">
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star-half-alt"></div>
+            <?php foreach($queryResultFeedBack as $item):?>
+                <div class="swiper-slide box">
+                    <img src="images/<?=$item['image']?>">
+                    <p><?=$item['contentFeedBack']?></p>
+                    <h3><?=$item['username']?></h3>
+                    <?=$item['starts'] == 5 ? 
+                        '<div class="stars">
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                        </div>'
+                        : 
+                        '<div class="stars">
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star"></div>
+                            <div class="i fas fa-star-half-alt"></div>
+                        </div>'
+                    ?>
                 </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="images/logo-con-ong-10.jpg" alt="">
-                <p>Amazinggg!!</p>
-                <h3>ST-MTP</h3>
-                <div class="stars">
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="images/tuankhanh.jpg" alt="">
-                <p>Greate !!</p>
-                <h3>Bumblee</h3>
-                <div class="stars">
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star-half-alt"></div>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <img src="images/bumblee.jpg" alt="">
-                <p>Woww..Love Shopp!</p>
-                <h3>Ngọc Trinh</h3>
-                <div class="stars">
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star"></div>
-                    <div class="i fas fa-star-half-alt"></div>
-                </div>
-            </div>
-
+            <?php endforeach; ?>
         </div>
-
     </div>
 </section>
 
@@ -135,7 +84,7 @@
     loop:true,
     spaceBetween: 100,
     autoplay: {
-        delay: 2500,
+        delay: 3500,
         disableOnInteraction: false,
     },
     centereedSlides: true,
