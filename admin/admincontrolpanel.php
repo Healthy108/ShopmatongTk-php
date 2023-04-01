@@ -1,9 +1,9 @@
 <div style="background: seashell; height: auto;">
-	<?php
-$chuaXuLy=mysqli_num_rows($connect->query("select*from orders where status=1"));
-$dangXuLy=mysqli_num_rows($connect->query("select*from orders where status=2"));
-$daXuLy=mysqli_num_rows($connect->query("select*from orders where status=3"));
-$huy=mysqli_num_rows($connect->query("select*from orders where status=4"));
+<?php
+	$chuaXuLy=mysqli_num_rows($connect->query("select*from orders where status=1"));
+	$dangXuLy=mysqli_num_rows($connect->query("select*from orders where status=2"));
+	$daXuLy=mysqli_num_rows($connect->query("select*from orders where status=3"));
+	$huy=mysqli_num_rows($connect->query("select*from orders where status=4"));
 ?>
 
 <table class="table table-bordered tbl-admin">

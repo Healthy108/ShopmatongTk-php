@@ -148,6 +148,9 @@ footer {
 .header_Top a {
   color: #000;
 }
+.header_Top a:hover {
+  font-size: 20px;
+}
 
 .search {
   display: flex;
@@ -386,7 +389,7 @@ a {
 
 @media (max-width: 991px) {
   html {
-    font-size: 50%;
+    font-size: 80%;
   }
   .header {
     padding: 1.5rem 2rem;
@@ -473,7 +476,7 @@ a {
 }
 
 @media (max-width: 990px) {
-  h1 {
+  .logo_title {
     display: none;
   }
   .logo_container {

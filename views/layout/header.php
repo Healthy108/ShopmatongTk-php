@@ -12,16 +12,17 @@
         <a href="?option=signin">Signin</a>
         <a href="?option=register">Register</a>
         <?php else:?>
-          <a href="?option=cart">Cart</a>
+          <a href="?option=cartcontainer">Cart</a>
+          <!-- <a href="?option=cart">Cart</a> -->
         <section><a href="?option=logout">LogOut</a></section>
       <?php endif;?>
     </div>
   </div>
 
   <!-- logo -->
-  <div style="display: flex" class="logo_container">
+  <div style="display: flex; cursor: pointer" class="logo_container">
       <a href="?option=home"><img src="images/logo-con-ong-10.jpg" alt="Logo shopTK" class="logo"></a>
-      <a href="?option=home"><h1>SHOP*TK</h1></a>
+      <h1 onclick="location='?option=home'" class="logo_title">SHOP*TK</h1>
   </div>
 
   <!-- Search --> 
@@ -39,7 +40,8 @@
         <a href="?option=signin"><b>SIGNIN <i class="fa-sharp fa-solid fa-right-to-bracket"></i></b></a>
         <a href="?option=register"><b> REGISTER <i class="fa-sharp fa-solid fa-id-card"></i></b></a>
       <?php else:?>
-        <a href="?option=cart"><b>CART <i class="fas fa-shopping-cart"></i></b></a>
+        <!-- <a href="?option=cart"><b>CART <i class="fas fa-shopping-cart"></i></b></a> -->
+        <a href="?option=cartcontainer"><b>CART <i class="fas fa-shopping-cart"></i></b></a>
     		<section class="hellomember">
           <span style="color: red; font-weight: bold; cursor: pointer" onclick="location='?option=user'"> 
             <b style="color: #000;">Hello:</b> 
