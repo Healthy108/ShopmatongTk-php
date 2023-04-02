@@ -7,13 +7,19 @@
    if(isset($_POST['newpassword'])):
         $username=$member['username'];
         $newpassword = md5($_POST['newpassword']);
+        //xác nhận mật khẩu hiện tại
+        $currentPassword = md5($_POST['password']);
+        $password = $member['password'];
         
-        $query = "update member set password='$newpassword' where username = '$username'";
-        if ($connect->query($query)) {
-            echo"<script>alert('Cập nhật mật khẩu thành công!');</script>";
-            header("location: ?option=user");
+        if ($currentPassword == $password) {
+            $query = "update member set password='$newpassword' where username = '$username'";
+            if ($connect->query($query)) {
+                echo"<script>alert('Cập nhật mật khẩu thành công!');</script>";
+            } else {
+                echo"<script>alert('Cập nhật mật khẩu thất bại.');</script>";
+            }
         } else {
-            echo"<script>alert('Cập nhật mật khẩu thất bại.');</script>";
+            echo"<script>alert('Mật khẩu hiện tại không đúng.');</script>";
         }
    endif;
 ?>
@@ -28,6 +34,10 @@
             <?=$member['username']?>
             <i class="fa-solid fa-pen-to-square" title="Chỉnh sửa" onclick="location='?option=edituser'"></i>
         </h3>
+        <div class="user_info">
+            <label>Mật khẩu hiện tại: </label>
+            <input name="password" type="password" placeholder="Nhập mật khẩu hiện tại" required>
+        </div>
         <div class="user_info">
             <label>Mật khẩu mới: </label>
             <input name="newpassword" type="password" placeholder="Nhập mật khẩu mới" required>

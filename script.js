@@ -20,96 +20,25 @@ var swiper = new Swiper(".review-slider", {
 });
 
 // ===============================================
-// if ($item['starts'] == 3) {
-//   '<div class="stars">
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//   </div>'
-// } else if ($item['starts'] == 4) {
-//   '<div class="stars">
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//   </div>'
-// } else if ($item['starts'] == 5) {
-//   '<div class="stars">
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//   </div>'
-// } else {
-//   '<div class="stars">
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star"></div>
-//       <div class="i fas fa-star-half-alt"></div>
-//   </div>'
-// }
 
+{/* <div class="cartContainer_container">
+    <div class="cartContainer_left">
+        <h3 onclick="location='?option=cartcontainer&action=cart'">Giỏ hàng của tôi</h3>
+        <hr>
+        <h3 onclick="location='?option=cartcontainer&action=ordersprocess'">Đơn hàng của tôi</h3>
+        <hr>
+    </div>
+    <div class="cartContainer_right">
+        <?php 
+            if(isset($_GET['action'])):
+                switch($_GET['action']):
+                    case'cart':include"views/cart.php"; break;
+                    case'ordersprocess':include"views/carts/ordersprocess.php"; break;
+                endswitch;
+            else:
+                include"views/cart.php";
+            endif;
+        ?>
 
-// <?=$item['starts'] == 5 ? 
-// '<div class="stars">
-//     <div class="i fas fa-star"></div>
-//     <div class="i fas fa-star"></div>
-//     <div class="i fas fa-star"></div>
-//     <div class="i fas fa-star"></div>
-//     <div class="i fas fa-star"></div>
-// </div>'
-// : 
-// '<div class="stars">
-//     <div class="i fas fa-star"></div>
-//     <div class="i fas fa-star"></div>
-//     <div class="i fas fa-star"></div>
-//     <div class="i fas fa-star"></div>
-//     <div class="i fas fa-star-half-alt"></div>
-// </div>'
-// ?>
-
-
-
-// switch ($item['starts']) {
-//   case $item['starts'] == 5:
-//       '<div class="stars">
-//       //       <div class="i fas fa-star"></div>
-//       //       <div class="i fas fa-star"></div>
-//       //       <div class="i fas fa-star"></div>
-//       //       <div class="i fas fa-star"></div>
-//       //       <div class="i fas fa-star"></div>
-//       //   </div>'
-//   break;
-//   case $item['starts'] == 4:
-//       '<div class="stars">
-//   //       <div class="i fas fa-star"></div>
-//   //       <div class="i fas fa-star"></div>
-//   //       <div class="i fas fa-star"></div>
-//   //       <div class="i fas fa-star"></div>
-//   //   </div>'
-//       break;
-//   case $item['starts'] == 3:
-//       '<div class="stars">
-//   //       <div class="i fas fa-star"></div>
-//   //       <div class="i fas fa-star"></div>
-//   //       <div class="i fas fa-star"></div>
-//   //   </div>'
-//       break;
-//   case $item['starts'] == 2:
-//       '<div class="stars">
-//   //       <div class="i fas fa-star"></div>
-//   //       <div class="i fas fa-star"></div>
-//   //   </div>'
-//       break;
-//   case $item['starts'] == 1:
-//       '<div class="stars">
-//   //       <div class="i fas fa-star"></div>
-//   //   </div>'
-//       break;
-  
-//   default:
-//       '<h2>Chưa có đánh giá!</h2>'
-//       break;
-// }
+    </div>
+</div> */}
