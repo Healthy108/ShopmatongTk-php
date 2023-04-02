@@ -113,7 +113,7 @@
     
 	    <p><input type="radio" name="status" value="3" <?=$order['status']==3?'checked':''?>> Đã xử lý</p>
 
-    	<p style="display: <?=$order['status']==3?'none;':''?>"><input type="radio" name="status" value="4" <?=$order['status']==4?'checked':''?>> Hủy</p>
+    	<p style="display: <?=$order['status']==3?'none;':''?>"><input type="radio" name="status" value="4" <?=$order['status']==4?'checked':''?>> Hủy đơn hàng</p>
     
     	<section><input <?=$order['status']==3?'disabled':''?> type="submit" value="Update đơn hàng" class="btn btn-primary"> <a href="?option=ordersprocess" class="btn btn-outline-secondary"> << Back</a></section>
     </form>
