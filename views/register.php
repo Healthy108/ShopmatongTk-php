@@ -21,7 +21,7 @@
 
 <section class="register">
 
-	<h2 style="text-align: center; font-size: 30px; padding-top: 50px">Đăng ký tài khoản</h2>
+	<h1 style="text-align: center; font-size: 30px; padding-top: 50px">Đăng ký tài khoản</h1>
 	
 	<section>
 		<section><?=isset($alert)?$alert:""?></section>
@@ -60,3 +60,4 @@
 		</form>
 	</section>
 </section>
+

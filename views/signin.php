@@ -33,10 +33,9 @@ if(isset($_POST['username'])){
 	}
 }
 ?>
-<section style="text-align: center; color: black; min-height: 100vh; margin-top: -35px;
-		background: url(https://ongvietnam.vn/wp-content/uploads/2019/02/banner-mat-ong-1.jpg) no-repeat;
-		background-size: cover;">
-	<h2 style="line-height: 50px; font-size: 30px; padding-top: 50px">Đăng nhập tài khoản</h2>
+
+<section class="login_container">
+	<h1>Đăng nhập tài khoản</h1>
 	<section><?=isset($alert)?$alert:""?></section>
 	<section>
 		<form method="post">
@@ -46,9 +45,41 @@ if(isset($_POST['username'])){
 			<section>
 				<label>Password: </label><input type="password" name="password" required>
 			</section><br>
-			<section><input type="submit" value="Đăng nhập"></section>
-		</form><br>
-
-		<label style="color: blue;"><u>No account?</u> <a href="?option=register" style="color: blue;">Register !</a></label>
+			<section>
+				<button type="submit">Đăng nhập</button>
+			</section>
+		</form>
+		<br>
+		<label>
+			<u>No account?</u>
+			<a href="?option=register">Register !</a>
+		</label>
 	</section>
 </section>
+
+
+<style>
+	.login_container {
+		text-align: center;
+		width: 100%;
+		min-height: 100vh;
+		margin-top: -20px;
+		background: url(https://ongvietnam.vn/wp-content/uploads/2019/02/banner-mat-ong-1.jpg) no-repeat;
+		background-size: cover;
+	}
+	.login_container h1 {
+		font-size: 30px;
+		text-align: center;
+	}
+	.login_container label {
+		font-weight: bold;
+	}
+	.login_container input {
+		width: 235px;
+		height: 30px;
+	}
+	.login_container button {
+		width: 100px;
+		height: 30px;
+	}
+</style>

@@ -100,20 +100,24 @@
     			<td><?=$item['name']?></td>
     			<td width="30%"><img src="images/<?=$item['image']?>" width="20%"></td>
     			<td><?=number_format($item['price'],0,',','.')?></td>
-    			<td><?=$item['number']?> <input type="button" value="+" onclick="location='?option=orderdetail&id=<?=$_GET['id']?>&action=update&type=asc&orderid=<?=$item['orderid']?>&productid=<?=$item['productid']?>';"> <input <?=$item['number']==0?'disabled':''?> type="button" value="-" onclick="location='?option=orderdetail&id=<?=$_GET['id']?>&action=update&type=desc&orderid=<?=$item['orderid']?>&productid=<?=$item['productid']?>';"></td>
+    			<td>
+					<?=$item['number']?> 
+					<!-- <input type="button" value="+" onclick="location='?option=orderdetail&id=<?=$_GET['id']?>&action=update&type=asc&orderid=<?=$item['orderid']?>&productid=<?=$item['productid']?>';">  -->
+					<!-- <input <?=$item['number']==0?'disabled':''?> type="button" value="-" onclick="location='?option=orderdetail&id=<?=$_GET['id']?>&action=update&type=desc&orderid=<?=$item['orderid']?>&productid=<?=$item['productid']?>';"> -->
+				</td>
     			<td><?=number_format($item['price']*$item['number'],0,',','.')?></td>
     		</tr>
     	<?php endforeach;?>
     		</tbody>
     	</table>
     	<h2>Trạng thái đơn hàng</h2>
-    	<p style="display: <?=$order['status']==2 || $order['status']==3?'none;':'block'?>"><input type="radio" name="status" value="1" <?=$order['status']==1?'checked':''?>> Chưa xử lý</p>
+    	<p style="display: <?=$order['status']==2 || $order['status']==3?'none;':'block'?>"><input type="radio" name="status" value="1" disabled <?=$order['status']==1?'checked':''?>> Chưa xử lý</p>
     
-    	<p style="display: <?=$order['status']==3?'none;':''?>"><input type="radio" name="status" value="2" <?=$order['status']==2?'checked':''?>> Đang xử lý</p>
+    	<p style="display: <?=$order['status']==3?'none;':''?>"><input type="radio" name="status" value="2" disabled <?=$order['status']==2?'checked':''?>> Đang xử lý</p>
     
-	    <p><input type="radio" name="status" value="3" <?=$order['status']==3?'checked':''?>> Đã xử lý</p>
+	    <p><input type="radio" name="status" value="3" disabled <?=$order['status']==3?'checked':''?>> Đã xử lý</p>
 
-    	<p style="display: <?=$order['status']==3?'none;':''?>"><input type="radio" name="status" value="4" <?=$order['status']==4?'checked':''?>> Hủy đơn hàng</p>
+    	<p style="display: <?=$order['status']==3?'none;':''?>"><input type="radio" name="status" value="4" disabled <?=$order['status']==4?'checked':''?>> Hủy đơn hàng</p>
     
     	<section><input <?=$order['status']==3?'disabled':''?> type="submit" value="Update đơn hàng" class="btn btn-primary"> <a href="?option=ordersprocess" class="btn btn-outline-secondary"> << Back</a></section>
     </form>

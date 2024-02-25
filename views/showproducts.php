@@ -15,7 +15,6 @@
   	$option='showproducts&range='.$_GET['range'];
     }
 
-  
     //$page: xem casc san pham o trang so bao nhieu?
     $page=1;
     if(isset($_GET['page'])){
@@ -56,8 +55,13 @@
   			<section class="name"><?=$item['name']?></section>
   			<section class="price"><?=number_format($item['price'],0,',','.')?> VND</section>
   			<section>
-          <!-- <input type="button" value="Đặt mua" onclick="location='?option=cart&action=add&id=<?=$item['id']?>';"> -->
           <input type="button" value="Đặt mua" onclick="location='<?=$checkUser?>&action=add&id=<?=$item['id']?>'">
+          
+            <div class="likeproduct">
+              <!-- INSERT INTO `likeproduct` (`id`, `productid`, `memberid`, `status`) VALUES (NULL, '9', '8', '1'); -->
+              <!-- <?= isset($_SESSION['member']) ? '<p>Yêu thích❤️️</p>': ''?> -->
+            </div>
+          
         </section>
   		</section>
   	<?php endforeach;?>
@@ -81,6 +85,16 @@
   .img:hover img {
       transform: scale(1.5);
       transition: all ease-in-out 0.5s;
+  }
+  .likeproduct {
+    color: red;
+    cursor: pointer;
+    font-style: italic;
+  }
+  .likeproduct:hover {
+    font-weight: bold;
+    transition: all .3s linear;
+    font-size: 16px;
   }
   </style>
 </div>

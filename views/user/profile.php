@@ -34,13 +34,11 @@
 
 <style>
     .profile_container {
-        padding: 100px;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
     }
     .profile_container h2 {
-        margin-top: -60px;
         text-align: center;
     }
     .profile_container h3 {

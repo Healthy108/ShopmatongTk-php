@@ -13,8 +13,9 @@
         <a href="?option=register">Register</a>
         <?php else:?>
           <a href="?option=cartcontainer">Cart</a>
+          <a href="?option=user">Profile</a>
           <!-- <a href="?option=cart">Cart</a> -->
-        <section><a href="?option=logout">LogOut</a></section>
+        <a href="?option=logout">LogOut</a>
       <?php endif;?>
     </div>
   </div>
